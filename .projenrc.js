@@ -1,4 +1,4 @@
-const { awscdk } = require("projen");
+const { awscdk, javascript } = require("projen");
 const project = new awscdk.AwsCdkConstructLibrary({
   author: "Andreas Forster",
   authorAddress: "andreas.forster@pepperize.com",
@@ -6,7 +6,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
   cdkVersion: "1.139.0",
-  defaultReleaseBranch: "main",
   name: "@pepperize/cdk-private-bucket",
   description: "This project provides a CDK construct for creating private S3 bucket.",
   keywords: ["aws", "cdk", "bucket", "s3"],
@@ -30,6 +29,26 @@ const project = new awscdk.AwsCdkConstructLibrary({
       printWidth: 120,
     },
   },
+
+  defaultReleaseBranch: "main",
+  npmAccess: javascript.NpmAccess.PUBLIC,
+  release: {
+    releaseEveryCommit: true,
+  },
+  releaseToNpm: true,
+  publishToNuget: {
+    dotNetNamespace: "Pepperize.CDK",
+    packageId: "Pepperize.CDK.PrivateBucket",
+  },
+  publishToPypi: {
+    distName: "pepperize.cdk-private-bucket",
+    module: "pepperize_cdk_private_bucket",
+  },
+  // publishToMaven: {
+  //   javaPackage: "your_java_package",
+  //   mavenGroupId: "your_package_group_id",
+  //   mavenArtifactId: "your_package_target_id",
+  // },
 
   gitignore: [".idea/", "*.iml"],
 
