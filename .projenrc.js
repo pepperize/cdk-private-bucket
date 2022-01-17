@@ -33,6 +33,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   gitignore: [".idea/", "*.iml"],
 
+  cdkDependencies: ["@aws-cdk/aws-s3"], // v1
+  cdkTestDependencies: ["@aws-cdk/assertions"],
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */
@@ -40,5 +42,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 });
 
 project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md");
+
+project.jest.addTestMatch("**/?(*.)@(spec|test).[tj]s?(x)");
 
 project.synth();
