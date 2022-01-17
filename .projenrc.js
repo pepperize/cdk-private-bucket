@@ -6,6 +6,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: 'cdk-private-bucket',
   repositoryUrl: 'https://github.com/pepperize/cdk-private-bucket.git',
+  gitignore: ['.idea/', '*.iml'],
 
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
