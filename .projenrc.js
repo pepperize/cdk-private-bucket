@@ -11,12 +11,26 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description: "This project provides a CDK construct for creating private S3 bucket.",
   keywords: ["aws", "cdk", "bucket", "s3"],
   repositoryUrl: "https://github.com/pepperize/cdk-private-bucket.git",
+
+  autoApproveUpgrades: true,
+  autoApproveOptions: {
+    allowedUsernames: ["unerty", "pflorek", "acfo", "dependabot[bot]"],
+    secret: "GITHUB_TOKEN",
+  },
+  depsUpgradeOptions: {
+    workflowOptions: {
+      secret: "PROJEN_GITHUB_TOKEN",
+    },
+  },
+  dependabot: true,
+
   prettier: true,
   prettierOptions: {
     settings: {
       printWidth: 120,
     },
   },
+
   gitignore: [".idea/", "*.iml"],
 
   // deps: [],                /* Runtime dependencies of this module. */
