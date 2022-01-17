@@ -13,6 +13,7 @@ This project provides a CDK construct to create an S3 Bucket with some security 
 {
   blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
   enforceSSL: true,
+  encryption: s3.BucketEncryption.S3_MANAGED,
 }
 ```
 
