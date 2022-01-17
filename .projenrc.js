@@ -1,10 +1,15 @@
 const { awscdk } = require("projen");
 const project = new awscdk.AwsCdkConstructLibrary({
   author: "Andreas Forster",
-  authorAddress: "acfo@gmx.net",
-  cdkVersion: "2.1.0",
+  authorAddress: "andreas.forster@pepperize.com",
+  authorOrganization: true,
+  license: "MIT",
+  copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
+  cdkVersion: "1.139.0",
   defaultReleaseBranch: "main",
-  name: "cdk-private-bucket",
+  name: "@pepperize/cdk-private-bucket",
+  description: "This project provides a CDK construct for creating private S3 bucket.",
+  keywords: ["aws", "cdk", "bucket", "s3"],
   repositoryUrl: "https://github.com/pepperize/cdk-private-bucket.git",
   prettier: true,
   prettierOptions: {
