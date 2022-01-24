@@ -28,8 +28,6 @@ const project = new AwsCdkConstructLibrary({
   //   mavenGroupId: "your_package_group_id",
   //   mavenArtifactId: "your_package_target_id",
   // },
-
-  testDeps: ["@aws-cdk/assertions"],
   devDeps: ["@pepperize/projen-awscdk-construct"],
 });
 
