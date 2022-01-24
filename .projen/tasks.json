@@ -117,6 +117,15 @@
         }
       ]
     },
+    "format": {
+      "name": "format",
+      "description": "Format with prettier",
+      "steps": [
+        {
+          "exec": "prettier --write src/{**/,}*.ts test/{**/,}*.ts .projenrc.js README.md"
+        }
+      ]
+    },
     "package": {
       "name": "package",
       "description": "Creates the distribution package",

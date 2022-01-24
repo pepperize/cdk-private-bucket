@@ -14,7 +14,7 @@ new PrivateBucket(scope: Construct, id: string, props?: PrivateBucketProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkprivatebucketprivatebucketparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkprivatebucketprivatebucketparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkprivatebucketprivatebucketparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkprivatebucketprivatebucketparameterprops) | [`@pepperize/cdk-private-bucket.PrivateBucketProps`](#@pepperize/cdk-private-bucket.PrivateBucketProps) | *No description.* |
 
@@ -22,7 +22,7 @@ new PrivateBucket(scope: Construct, id: string, props?: PrivateBucketProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-private-bucket.PrivateBucket.parameter.scope" id="pepperizecdkprivatebucketprivatebucketparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -58,31 +58,31 @@ const privateBucketProps: PrivateBucketProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`accessControl`](#pepperizecdkprivatebucketprivatebucketpropspropertyaccesscontrol) | [`@aws-cdk/aws-s3.BucketAccessControl`](#@aws-cdk/aws-s3.BucketAccessControl) | Specifies a canned ACL that grants predefined permissions to the bucket. |
+| [`accessControl`](#pepperizecdkprivatebucketprivatebucketpropspropertyaccesscontrol) | [`aws-cdk-lib.aws_s3.BucketAccessControl`](#aws-cdk-lib.aws_s3.BucketAccessControl) | Specifies a canned ACL that grants predefined permissions to the bucket. |
 | [`autoDeleteObjects`](#pepperizecdkprivatebucketprivatebucketpropspropertyautodeleteobjects) | `boolean` | Whether all objects should be automatically deleted when the bucket is removed from the stack or when the stack is deleted. |
-| [`blockPublicAccess`](#pepperizecdkprivatebucketprivatebucketpropspropertyblockpublicaccess) | [`@aws-cdk/aws-s3.BlockPublicAccess`](#@aws-cdk/aws-s3.BlockPublicAccess) | The block public access configuration of this bucket. |
+| [`blockPublicAccess`](#pepperizecdkprivatebucketprivatebucketpropspropertyblockpublicaccess) | [`aws-cdk-lib.aws_s3.BlockPublicAccess`](#aws-cdk-lib.aws_s3.BlockPublicAccess) | The block public access configuration of this bucket. |
 | [`bucketKeyEnabled`](#pepperizecdkprivatebucketprivatebucketpropspropertybucketkeyenabled) | `boolean` | Specifies whether Amazon S3 should use an S3 Bucket Key with server-side encryption using KMS (SSE-KMS) for new objects in the bucket. |
 | [`bucketName`](#pepperizecdkprivatebucketprivatebucketpropspropertybucketname) | `string` | Physical name of this bucket. |
-| [`cors`](#pepperizecdkprivatebucketprivatebucketpropspropertycors) | [`@aws-cdk/aws-s3.CorsRule`](#@aws-cdk/aws-s3.CorsRule)[] | The CORS configuration of this bucket. |
-| [`encryption`](#pepperizecdkprivatebucketprivatebucketpropspropertyencryption) | [`@aws-cdk/aws-s3.BucketEncryption`](#@aws-cdk/aws-s3.BucketEncryption) | The kind of server-side encryption to apply to this bucket. |
-| [`encryptionKey`](#pepperizecdkprivatebucketprivatebucketpropspropertyencryptionkey) | [`@aws-cdk/aws-kms.IKey`](#@aws-cdk/aws-kms.IKey) | External KMS key to use for bucket encryption. |
+| [`cors`](#pepperizecdkprivatebucketprivatebucketpropspropertycors) | [`aws-cdk-lib.aws_s3.CorsRule`](#aws-cdk-lib.aws_s3.CorsRule)[] | The CORS configuration of this bucket. |
+| [`encryption`](#pepperizecdkprivatebucketprivatebucketpropspropertyencryption) | [`aws-cdk-lib.aws_s3.BucketEncryption`](#aws-cdk-lib.aws_s3.BucketEncryption) | The kind of server-side encryption to apply to this bucket. |
+| [`encryptionKey`](#pepperizecdkprivatebucketprivatebucketpropspropertyencryptionkey) | [`aws-cdk-lib.aws_kms.IKey`](#aws-cdk-lib.aws_kms.IKey) | External KMS key to use for bucket encryption. |
 | [`enforceSSL`](#pepperizecdkprivatebucketprivatebucketpropspropertyenforcessl) | `boolean` | Enforces SSL for requests. |
 | [`eventBridgeEnabled`](#pepperizecdkprivatebucketprivatebucketpropspropertyeventbridgeenabled) | `boolean` | Whether this bucket should send notifications to Amazon EventBridge or not. |
-| [`intelligentTieringConfigurations`](#pepperizecdkprivatebucketprivatebucketpropspropertyintelligenttieringconfigurations) | [`@aws-cdk/aws-s3.IntelligentTieringConfiguration`](#@aws-cdk/aws-s3.IntelligentTieringConfiguration)[] | Inteligent Tiering Configurations. |
-| [`inventories`](#pepperizecdkprivatebucketprivatebucketpropspropertyinventories) | [`@aws-cdk/aws-s3.Inventory`](#@aws-cdk/aws-s3.Inventory)[] | The inventory configuration of the bucket. |
-| [`lifecycleRules`](#pepperizecdkprivatebucketprivatebucketpropspropertylifecyclerules) | [`@aws-cdk/aws-s3.LifecycleRule`](#@aws-cdk/aws-s3.LifecycleRule)[] | Rules that define how Amazon S3 manages objects during their lifetime. |
-| [`metrics`](#pepperizecdkprivatebucketprivatebucketpropspropertymetrics) | [`@aws-cdk/aws-s3.BucketMetrics`](#@aws-cdk/aws-s3.BucketMetrics)[] | The metrics configuration of this bucket. |
-| [`objectOwnership`](#pepperizecdkprivatebucketprivatebucketpropspropertyobjectownership) | [`@aws-cdk/aws-s3.ObjectOwnership`](#@aws-cdk/aws-s3.ObjectOwnership) | The objectOwnership of the bucket. |
+| [`intelligentTieringConfigurations`](#pepperizecdkprivatebucketprivatebucketpropspropertyintelligenttieringconfigurations) | [`aws-cdk-lib.aws_s3.IntelligentTieringConfiguration`](#aws-cdk-lib.aws_s3.IntelligentTieringConfiguration)[] | Inteligent Tiering Configurations. |
+| [`inventories`](#pepperizecdkprivatebucketprivatebucketpropspropertyinventories) | [`aws-cdk-lib.aws_s3.Inventory`](#aws-cdk-lib.aws_s3.Inventory)[] | The inventory configuration of the bucket. |
+| [`lifecycleRules`](#pepperizecdkprivatebucketprivatebucketpropspropertylifecyclerules) | [`aws-cdk-lib.aws_s3.LifecycleRule`](#aws-cdk-lib.aws_s3.LifecycleRule)[] | Rules that define how Amazon S3 manages objects during their lifetime. |
+| [`metrics`](#pepperizecdkprivatebucketprivatebucketpropspropertymetrics) | [`aws-cdk-lib.aws_s3.BucketMetrics`](#aws-cdk-lib.aws_s3.BucketMetrics)[] | The metrics configuration of this bucket. |
+| [`objectOwnership`](#pepperizecdkprivatebucketprivatebucketpropspropertyobjectownership) | [`aws-cdk-lib.aws_s3.ObjectOwnership`](#aws-cdk-lib.aws_s3.ObjectOwnership) | The objectOwnership of the bucket. |
 | [`publicReadAccess`](#pepperizecdkprivatebucketprivatebucketpropspropertypublicreadaccess) | `boolean` | Grants public read access to all objects in the bucket. |
-| [`removalPolicy`](#pepperizecdkprivatebucketprivatebucketpropspropertyremovalpolicy) | [`@aws-cdk/core.RemovalPolicy`](#@aws-cdk/core.RemovalPolicy) | Policy to apply when the bucket is removed from this stack. |
-| [`serverAccessLogsBucket`](#pepperizecdkprivatebucketprivatebucketpropspropertyserveraccesslogsbucket) | [`@aws-cdk/aws-s3.IBucket`](#@aws-cdk/aws-s3.IBucket) | Destination bucket for the server access logs. |
+| [`removalPolicy`](#pepperizecdkprivatebucketprivatebucketpropspropertyremovalpolicy) | [`aws-cdk-lib.RemovalPolicy`](#aws-cdk-lib.RemovalPolicy) | Policy to apply when the bucket is removed from this stack. |
+| [`serverAccessLogsBucket`](#pepperizecdkprivatebucketprivatebucketpropspropertyserveraccesslogsbucket) | [`aws-cdk-lib.aws_s3.IBucket`](#aws-cdk-lib.aws_s3.IBucket) | Destination bucket for the server access logs. |
 | [`serverAccessLogsPrefix`](#pepperizecdkprivatebucketprivatebucketpropspropertyserveraccesslogsprefix) | `string` | Optional log file prefix to use for the bucket's access logs. |
 | [`transferAcceleration`](#pepperizecdkprivatebucketprivatebucketpropspropertytransferacceleration) | `boolean` | Whether this bucket should have transfer acceleration turned on or not. |
 | [`versioned`](#pepperizecdkprivatebucketprivatebucketpropspropertyversioned) | `boolean` | Whether this bucket should have versioning turned on or not. |
 | [`websiteErrorDocument`](#pepperizecdkprivatebucketprivatebucketpropspropertywebsiteerrordocument) | `string` | The name of the error document (e.g. "404.html") for the website. `websiteIndexDocument` must also be set if this is set. |
 | [`websiteIndexDocument`](#pepperizecdkprivatebucketprivatebucketpropspropertywebsiteindexdocument) | `string` | The name of the index document (e.g. "index.html") for the website. Enables static website hosting for this bucket. |
-| [`websiteRedirect`](#pepperizecdkprivatebucketprivatebucketpropspropertywebsiteredirect) | [`@aws-cdk/aws-s3.RedirectTarget`](#@aws-cdk/aws-s3.RedirectTarget) | Specifies the redirect behavior of all requests to a website endpoint of a bucket. |
-| [`websiteRoutingRules`](#pepperizecdkprivatebucketprivatebucketpropspropertywebsiteroutingrules) | [`@aws-cdk/aws-s3.RoutingRule`](#@aws-cdk/aws-s3.RoutingRule)[] | Rules that define when a redirect is applied and the redirect behavior. |
+| [`websiteRedirect`](#pepperizecdkprivatebucketprivatebucketpropspropertywebsiteredirect) | [`aws-cdk-lib.aws_s3.RedirectTarget`](#aws-cdk-lib.aws_s3.RedirectTarget) | Specifies the redirect behavior of all requests to a website endpoint of a bucket. |
+| [`websiteRoutingRules`](#pepperizecdkprivatebucketprivatebucketpropspropertywebsiteroutingrules) | [`aws-cdk-lib.aws_s3.RoutingRule`](#aws-cdk-lib.aws_s3.RoutingRule)[] | Rules that define when a redirect is applied and the redirect behavior. |
 
 ---
 
@@ -92,7 +92,7 @@ const privateBucketProps: PrivateBucketProps = { ... }
 public readonly accessControl: BucketAccessControl;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.BucketAccessControl`](#@aws-cdk/aws-s3.BucketAccessControl)
+- *Type:* [`aws-cdk-lib.aws_s3.BucketAccessControl`](#aws-cdk-lib.aws_s3.BucketAccessControl)
 - *Default:* BucketAccessControl.PRIVATE
 
 Specifies a canned ACL that grants predefined permissions to the bucket.
@@ -120,7 +120,7 @@ Requires the `removalPolicy` to be set to `RemovalPolicy.DESTROY`.  **Warning** 
 public readonly blockPublicAccess: BlockPublicAccess;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.BlockPublicAccess`](#@aws-cdk/aws-s3.BlockPublicAccess)
+- *Type:* [`aws-cdk-lib.aws_s3.BlockPublicAccess`](#aws-cdk-lib.aws_s3.BlockPublicAccess)
 - *Default:* CloudFormation defaults will apply. New buckets and objects don't allow public access, but users can modify bucket policies or object permissions to allow public access
 
 The block public access configuration of this bucket.
@@ -163,7 +163,7 @@ Physical name of this bucket.
 public readonly cors: CorsRule[];
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.CorsRule`](#@aws-cdk/aws-s3.CorsRule)[]
+- *Type:* [`aws-cdk-lib.aws_s3.CorsRule`](#aws-cdk-lib.aws_s3.CorsRule)[]
 - *Default:* No CORS configuration.
 
 The CORS configuration of this bucket.
@@ -178,7 +178,7 @@ The CORS configuration of this bucket.
 public readonly encryption: BucketEncryption;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.BucketEncryption`](#@aws-cdk/aws-s3.BucketEncryption)
+- *Type:* [`aws-cdk-lib.aws_s3.BucketEncryption`](#aws-cdk-lib.aws_s3.BucketEncryption)
 - *Default:* `Kms` if `encryptionKey` is specified, or `Unencrypted` otherwise.
 
 The kind of server-side encryption to apply to this bucket.
@@ -193,7 +193,7 @@ If you choose KMS, you can specify a KMS key via `encryptionKey`. If encryption 
 public readonly encryptionKey: IKey;
 ```
 
-- *Type:* [`@aws-cdk/aws-kms.IKey`](#@aws-cdk/aws-kms.IKey)
+- *Type:* [`aws-cdk-lib.aws_kms.IKey`](#aws-cdk-lib.aws_kms.IKey)
 - *Default:* If encryption is set to "Kms" and this property is undefined, a new KMS key will be created and associated with this bucket.
 
 External KMS key to use for bucket encryption.
@@ -238,7 +238,7 @@ Whether this bucket should send notifications to Amazon EventBridge or not.
 public readonly intelligentTieringConfigurations: IntelligentTieringConfiguration[];
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.IntelligentTieringConfiguration`](#@aws-cdk/aws-s3.IntelligentTieringConfiguration)[]
+- *Type:* [`aws-cdk-lib.aws_s3.IntelligentTieringConfiguration`](#aws-cdk-lib.aws_s3.IntelligentTieringConfiguration)[]
 - *Default:* No Intelligent Tiiering Configurations.
 
 Inteligent Tiering Configurations.
@@ -253,7 +253,7 @@ Inteligent Tiering Configurations.
 public readonly inventories: Inventory[];
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.Inventory`](#@aws-cdk/aws-s3.Inventory)[]
+- *Type:* [`aws-cdk-lib.aws_s3.Inventory`](#aws-cdk-lib.aws_s3.Inventory)[]
 - *Default:* No inventory configuration
 
 The inventory configuration of the bucket.
@@ -268,7 +268,7 @@ The inventory configuration of the bucket.
 public readonly lifecycleRules: LifecycleRule[];
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.LifecycleRule`](#@aws-cdk/aws-s3.LifecycleRule)[]
+- *Type:* [`aws-cdk-lib.aws_s3.LifecycleRule`](#aws-cdk-lib.aws_s3.LifecycleRule)[]
 - *Default:* No lifecycle rules.
 
 Rules that define how Amazon S3 manages objects during their lifetime.
@@ -281,7 +281,7 @@ Rules that define how Amazon S3 manages objects during their lifetime.
 public readonly metrics: BucketMetrics[];
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.BucketMetrics`](#@aws-cdk/aws-s3.BucketMetrics)[]
+- *Type:* [`aws-cdk-lib.aws_s3.BucketMetrics`](#aws-cdk-lib.aws_s3.BucketMetrics)[]
 - *Default:* No metrics configuration.
 
 The metrics configuration of this bucket.
@@ -296,7 +296,7 @@ The metrics configuration of this bucket.
 public readonly objectOwnership: ObjectOwnership;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.ObjectOwnership`](#@aws-cdk/aws-s3.ObjectOwnership)
+- *Type:* [`aws-cdk-lib.aws_s3.ObjectOwnership`](#aws-cdk-lib.aws_s3.ObjectOwnership)
 - *Default:* No ObjectOwnership configuration, uploading account will own the object.
 
 The objectOwnership of the bucket.
@@ -326,7 +326,7 @@ Similar to calling `bucket.grantPublicAccess()`
 public readonly removalPolicy: RemovalPolicy;
 ```
 
-- *Type:* [`@aws-cdk/core.RemovalPolicy`](#@aws-cdk/core.RemovalPolicy)
+- *Type:* [`aws-cdk-lib.RemovalPolicy`](#aws-cdk-lib.RemovalPolicy)
 - *Default:* The bucket will be orphaned.
 
 Policy to apply when the bucket is removed from this stack.
@@ -339,7 +339,7 @@ Policy to apply when the bucket is removed from this stack.
 public readonly serverAccessLogsBucket: IBucket;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.IBucket`](#@aws-cdk/aws-s3.IBucket)
+- *Type:* [`aws-cdk-lib.aws_s3.IBucket`](#aws-cdk-lib.aws_s3.IBucket)
 - *Default:* If "serverAccessLogsPrefix" undefined - access logs disabled, otherwise - log to current bucket.
 
 Destination bucket for the server access logs.
@@ -419,7 +419,7 @@ The name of the index document (e.g. "index.html") for the website. Enables stat
 public readonly websiteRedirect: RedirectTarget;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.RedirectTarget`](#@aws-cdk/aws-s3.RedirectTarget)
+- *Type:* [`aws-cdk-lib.aws_s3.RedirectTarget`](#aws-cdk-lib.aws_s3.RedirectTarget)
 - *Default:* No redirection.
 
 Specifies the redirect behavior of all requests to a website endpoint of a bucket.
@@ -434,7 +434,7 @@ If you specify this property, you can't specify "websiteIndexDocument", "website
 public readonly websiteRoutingRules: RoutingRule[];
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.RoutingRule`](#@aws-cdk/aws-s3.RoutingRule)[]
+- *Type:* [`aws-cdk-lib.aws_s3.RoutingRule`](#aws-cdk-lib.aws_s3.RoutingRule)[]
 - *Default:* No redirection rules.
 
 Rules that define when a redirect is applied and the redirect behavior.

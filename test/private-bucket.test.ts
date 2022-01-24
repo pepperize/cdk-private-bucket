@@ -1,6 +1,5 @@
-import { Capture, Template } from "@aws-cdk/assertions";
-import * as s3 from "@aws-cdk/aws-s3";
-import { Stack } from "@aws-cdk/core";
+import { Stack } from "aws-cdk-lib";
+import { Capture, Template } from "aws-cdk-lib/assertions";
 import { PrivateBucket } from "../src";
 
 describe("PrivateBucket", () => {
@@ -8,30 +7,7 @@ describe("PrivateBucket", () => {
     // Given
     const stack = new Stack();
     // When
-    new PrivateBucket(stack, "id", {
-      encryption: undefined,
-    });
-    // Then
-    const template = Template.fromStack(stack);
-    template.hasResourceProperties("AWS::S3::Bucket", {
-      BucketEncryption: {
-        ServerSideEncryptionConfiguration: [
-          {
-            ServerSideEncryptionByDefault: {
-              SSEAlgorithm: "AES256",
-            },
-          },
-        ],
-      },
-    });
-  });
-  it("should overide encryption", () => {
-    // Given
-    const stack = new Stack();
-    // When
-    new PrivateBucket(stack, "id", {
-      encryption: s3.BucketEncryption.UNENCRYPTED,
-    });
+    new PrivateBucket(stack, "id");
     // Then
     const template = Template.fromStack(stack);
     template.hasResourceProperties("AWS::S3::Bucket", {
