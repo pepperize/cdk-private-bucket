@@ -670,10 +670,10 @@
   resolved "https://registry.yarnpkg.com/@oozcitak/util/-/util-8.3.8.tgz#10f65fe1891fd8cde4957360835e78fd1936bfdd"
   integrity sha512-T8TbSnGsxo6TDBJx/Sgv/BlVJL3tshxZP7Aq5R1mSnM5OcHY2dQaxLMu2+E8u3gN0MLOzdjurqN4ZRVuzQycOQ==
 
-"@pepperize/projen-awscdk-construct@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@pepperize/projen-awscdk-construct/-/projen-awscdk-construct-0.0.13.tgz#74f0c922852ddbc8ff5ee6588b1c85cd66384644"
-  integrity sha512-sJgZEfURJuNgKBuXLfDz6eYtkQNL2I/u1K7HsRnP+gunWIttCJbjFsXhqsswg8j4qSVnn+3HajTHCNvZ4zY0Lw==
+"@pepperize/projen-awscdk-construct@^0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@pepperize/projen-awscdk-construct/-/projen-awscdk-construct-0.0.28.tgz#caf548ed560ca33ddb61e4255034beb5c60f855c"
+  integrity sha512-ch7OGC/yGQ0Q9AwnYPAQ3+F2MccxbLcdIpnLgdZ8q1CHFYJyiQEzDyffVLHQcPWepGrLRYQoPn+u0L5immBQnw==
   dependencies:
     projen "^0.50.33"
 
@@ -3717,7 +3717,7 @@ jsesc@^2.5.1:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
-jsii-diff@^1.53.0:
+jsii-diff@^1.52.1:
   version "1.53.0"
   resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.53.0.tgz#2c36f81282eaa00767f5515e0276a664b16be574"
   integrity sha512-mbDsts3fsTlQeUlMONl2W4nwESoiFpdHEtm4x+rlaQXitS9GceAHhOczYUoaaTY/mwgl33LEWqjbF3EXQ6/3xA==
@@ -3776,7 +3776,7 @@ jsii-rosetta@^1.52.1:
     workerpool "^6.2.0"
     yargs "^16.2.0"
 
-jsii@1.53.0, jsii@^1.53.0:
+jsii@1.53.0, jsii@^1.52.1:
   version "1.53.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.53.0.tgz#946b557ef50523a57e9b5a570293b951186c83d2"
   integrity sha512-hPwapfZD3zIzHD49gewtM/w/iSi6QMPKf+HjovFA4u4j/cwUJBpb5DqG55m3LtUKHLj23Ll6KDuh7xr+H5PiDA==
@@ -4827,6 +4827,24 @@ projen@^0.50.33:
     shx "^0.3.4"
     xmlbuilder2 "^2.4.1"
     yaml "^1.10.2"
+    yargs "^16.2.0"
+
+projen@^0.52.29:
+  version "0.52.29"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.52.29.tgz#7a62e02a60e6a358ddd2596777aa6bb6662b374d"
+  integrity sha512-VXnb2ehJQMzVoVaO0CLAs4xFUbohuoeu/mIu/OvhY+KkGwxAneKPDfUcRcOQ7/qoj1HCHJGx/+T/875fuvN6WA==
+  dependencies:
+    "@iarna/toml" "^2.2.5"
+    case "^1.6.3"
+    chalk "^4.1.2"
+    conventional-changelog-config-spec "^2.1.0"
+    fs-extra "^9.1.0"
+    glob "^7"
+    ini "^2.0.0"
+    semver "^7.3.5"
+    shx "^0.3.4"
+    xmlbuilder2 "^2.4.1"
+    yaml next
     yargs "^16.2.0"
 
 promise-inflight@^1.0.1:
@@ -6037,6 +6055,11 @@ yaml@1.10.2, yaml@^1.10.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
+
+yaml@next:
+  version "2.0.0-10"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.0.0-10.tgz#d5b59e2d14b8683313a534f2bbc648e211a2753e"
+  integrity sha512-FHV8s5ODFFQXX/enJEU2EkanNl1UDBUz8oa4k5Qo/sR+Iq7VmhCDkRMb0/mjJCNeAWQ31W8WV6PYStDE4d9EIw==
 
 yargs-parser@20.x, yargs-parser@^20.2.2, yargs-parser@^20.2.3:
   version "20.2.9"
