@@ -24,7 +24,7 @@ const project = new AwsCdkConstructLibrary({
     module: "pepperize_cdk_private_bucket",
   },
   publishToMaven: {
-    mavenRepositoryUrl: "https://s01.oss.sonatype.org",
+    mavenEndpoint: "https://s01.oss.sonatype.org",
     mavenGroupId: "com.pepperize",
     mavenArtifactId: "cdk-private-bucket",
     javaPackage: "com.pepperize.cdk.private_bucket",
