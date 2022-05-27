@@ -23,11 +23,11 @@ const project = new AwsCdkConstructLibrary({
     distName: "pepperize.cdk-private-bucket",
     module: "pepperize_cdk_private_bucket",
   },
-  // publishToMaven: {
-  //   javaPackage: "your_java_package",
-  //   mavenGroupId: "your_package_group_id",
-  //   mavenArtifactId: "your_package_target_id",
-  // },
+  publishToMaven: {
+    mavenGroupId: "com.pepperize",
+    mavenArtifactId: "cdk-private-bucket",
+    javaPackage: "com.pepperize.cdk.private_bucket",
+  },
   devDeps: ["@pepperize/projen-awscdk-construct"],
 });
 
