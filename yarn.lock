@@ -3877,17 +3877,17 @@ jsii@1.52.1:
     yargs "^16.2.0"
 
 jsii@^1.52.1:
-  version "1.59.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.59.0.tgz#65d3454311f931345b4996177135321f8bfd506d"
-  integrity sha512-vTVMRN5ViX1aCe0K7P8ECKi2CseNDEcvIWvw4xyg+nCg9a73XZ16ONOqBAGjKUnJv2gOsecsb1FyuqcRbfs+zQ==
+  version "1.60.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.60.0.tgz#d4da883224e39e198b8da0ea3677507e5e8eee0c"
+  integrity sha512-ENCBJLXNu20jkjHuoBYgklQuSOYwqtlZ9VyN6mDAUeWkDDLme+L/iuSF6qW+mwgtTTsYfVft/QdgzgwlLWOImw==
   dependencies:
-    "@jsii/check-node" "1.59.0"
-    "@jsii/spec" "^1.59.0"
+    "@jsii/check-node" "1.60.0"
+    "@jsii/spec" "^1.60.0"
     case "^1.6.3"
     chalk "^4"
     deep-equal "^2.0.5"
-    fs-extra "^9.1.0"
-    log4js "^6.4.6"
+    fs-extra "^10.1.0"
+    log4js "^6.4.7"
     semver "^7.3.7"
     semver-intersect "^1.4.0"
     sort-json "^2.0.1"
