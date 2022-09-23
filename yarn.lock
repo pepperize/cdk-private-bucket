@@ -3905,12 +3905,12 @@ jsii@1.52.1:
     yargs "^16.2.0"
 
 jsii@^1.52.1:
-  version "1.67.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.67.0.tgz#e529e24656eac589c59328301d5363742e8ca023"
-  integrity sha512-CY7q4pmeq65H7bwx5KW0YHoDMgjg/jOXFWNG2juOOasFBzl7DMJpKTP00nj7vMPb4z/LgOJaZJA5y5GBMSCQzQ==
+  version "1.68.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.68.0.tgz#497cfacb13bb79029d4e322896278d005c65ab1e"
+  integrity sha512-L6ufFo+XqWY93VONxNZ3rL9qIaYPFr0P4gBHk1O6T9/HGZWMnYBjEqhWUb36ur1NBldNmMlSnoZFFitt7HksUQ==
   dependencies:
-    "@jsii/check-node" "1.67.0"
-    "@jsii/spec" "^1.67.0"
+    "@jsii/check-node" "1.68.0"
+    "@jsii/spec" "^1.68.0"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
