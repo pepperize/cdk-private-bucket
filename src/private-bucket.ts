@@ -1,8 +1,7 @@
 import { aws_s3 } from "aws-cdk-lib";
 import { Construct } from "constructs";
 
-export interface PrivateBucketProps extends aws_s3.BucketProps {
-}
+export interface PrivateBucketProps extends aws_s3.BucketProps {}
 
 export class PrivateBucket extends aws_s3.Bucket {
   constructor(scope: Construct, id: string, props: PrivateBucketProps = {}) {

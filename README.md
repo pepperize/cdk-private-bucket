@@ -1,9 +1,10 @@
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 [![GitHub](https://img.shields.io/github/license/pepperize/cdk-private-bucket?style=flat-square)](https://github.com/pepperize/cdk-private-bucket/blob/main/LICENSE)
 [![npm (scoped)](https://img.shields.io/npm/v/@pepperize/cdk-private-bucket?style=flat-square)](https://www.npmjs.com/package/@pepperize/cdk-private-bucket)
 [![PyPI](https://img.shields.io/pypi/v/pepperize.cdk-private-bucket?style=flat-square)](https://pypi.org/project/pepperize.cdk-private-bucket/)
 [![Nuget](https://img.shields.io/nuget/v/Pepperize.CDK.PrivateBucket?style=flat-square)](https://www.nuget.org/packages/Pepperize.CDK.PrivateBucket/)
 [![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/com.pepperize/cdk-private-bucket?server=https%3A%2F%2Fs01.oss.sonatype.org%2F&style=flat-square)](https://s01.oss.sonatype.org/content/repositories/releases/com/pepperize/cdk-private-bucket/)
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/pepperize/cdk-private-bucket/release/main?label=release&style=flat-square)](https://github.com/pepperize/cdk-private-bucket/actions/workflows/release.yml)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/pepperize/cdk-private-bucket/release.yml?branch=main&label=release&style=flat-square)](https://github.com/pepperize/cdk-private-bucket/actions/workflows/release.yml)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pepperize/cdk-private-bucket?sort=semver&style=flat-square)](https://github.com/pepperize/cdk-private-bucket/releases)
 
 # AWS CDK Private Bucket
