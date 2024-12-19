@@ -2,6 +2,7 @@
   "dependencies": [
     {
       "name": "@pepperize/projen-awscdk-construct",
+      "version": "~0.0.730",
       "type": "build"
     },
     {
@@ -109,7 +110,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.67.74",
+      "version": "~0.91.1",
       "type": "devenv"
     },
     {
