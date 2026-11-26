@@ -4,6 +4,8 @@
 
 ### PrivateBucket <a name="PrivateBucket" id="@pepperize/cdk-private-bucket.PrivateBucket"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable, aws-cdk-lib.IResource, aws-cdk-lib.interfaces.IEnvironmentAware, aws-cdk-lib.aws_s3.IBucket, aws-cdk-lib.interfaces.aws_s3.IBucketRef, aws-cdk-lib.aws_iam.IEncryptedResource
+
 #### Initializers <a name="Initializers" id="@pepperize/cdk-private-bucket.PrivateBucket.Initializer"></a>
 
 ```typescript
@@ -43,19 +45,25 @@ new PrivateBucket(scope: Construct, id: string, props?: PrivateBucketProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.with">with</a></code> | Applies one or more mixins to this construct. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.applyCrossStackReferenceStrength">applyCrossStackReferenceStrength</a></code> | Override the cross-stack reference strength for this resource. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.applyRemovalPolicy">applyRemovalPolicy</a></code> | Apply the given removal policy to this resource. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.addEventNotification">addEventNotification</a></code> | Adds a bucket notification event destination. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.addObjectCreatedNotification">addObjectCreatedNotification</a></code> | Subscribes a destination to receive notifications when an object is created in the bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.addObjectRemovedNotification">addObjectRemovedNotification</a></code> | Subscribes a destination to receive notifications when an object is removed from the bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.addReplicationPolicy">addReplicationPolicy</a></code> | Adds resource policy statements to this bucket that permit cross-account replication. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.addToResourcePolicy">addToResourcePolicy</a></code> | Adds a statement to the resource policy for a principal (i.e. account/role/service) to perform actions on this bucket and/or its contents. Use `bucketArn` and `arnForObjects(keys)` to obtain ARNs for this bucket or objects. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.arnForObjects">arnForObjects</a></code> | Returns an ARN that represents all objects within the bucket that match the key pattern specified. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.enableEventBridgeNotification">enableEventBridgeNotification</a></code> | Enables event bridge notification, causing all events below to be sent to EventBridge:. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantDelete">grantDelete</a></code> | Grants s3:DeleteObject* permission to an IAM principal for objects in this bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantOnKey">grantOnKey</a></code> | Gives permissions to a grantable entity to perform actions on the encryption key. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantPublicAccess">grantPublicAccess</a></code> | Allows unrestricted access to objects from this bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantPut">grantPut</a></code> | Grants s3:PutObject* and s3:Abort* permissions for this bucket to an IAM principal. |
-| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantPutAcl">grantPutAcl</a></code> | Grant the given IAM identity permissions to modify the ACLs of objects in the given Bucket. |
-| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantRead">grantRead</a></code> | Grant read permissions for this bucket and it's contents to an IAM principal (Role/Group/User). |
-| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantReadWrite">grantReadWrite</a></code> | Grants read/write permissions for this bucket and it's contents to an IAM principal (Role/Group/User). |
-| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantWrite">grantWrite</a></code> | Grant write permissions to this bucket to an IAM principal. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantPutAcl">grantPutAcl</a></code> | The use of this method is discouraged. Please use `grants.putAcl()` instead. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantRead">grantRead</a></code> | Grant read permissions for this bucket and its contents to an IAM principal (Role/Group/User). |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantReadWrite">grantReadWrite</a></code> | The use of this method is discouraged. Please use `grants.readWrite()` instead. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantReplicationPermission">grantReplicationPermission</a></code> | Grant replication permission to a principal. This method allows the principal to perform replication operations on this bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.grantWrite">grantWrite</a></code> | The use of this method is discouraged. Please use `grants.write()` instead. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.onCloudTrailEvent">onCloudTrailEvent</a></code> | Define a CloudWatch event that triggers when something happens to this repository. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.onCloudTrailPutObject">onCloudTrailPutObject</a></code> | Defines an AWS CloudWatch event that triggers when an object is uploaded to the specified paths (keys) in this bucket using the PutObject API call. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.onCloudTrailWriteObject">onCloudTrailWriteObject</a></code> | Defines an AWS CloudWatch event that triggers when an object at the specified paths (keys) in this bucket are written to. |
@@ -77,6 +85,47 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-private-bucket.PrivateBucket.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-private-bucket.PrivateBucket.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+---
+
+##### `applyCrossStackReferenceStrength` <a name="applyCrossStackReferenceStrength" id="@pepperize/cdk-private-bucket.PrivateBucket.applyCrossStackReferenceStrength"></a>
+
+```typescript
+public applyCrossStackReferenceStrength(strength: ReferenceStrength): void
+```
+
+Override the cross-stack reference strength for this resource.
+
+When set, any cross-stack reference to this resource will use the specified
+mechanism instead of the global default determined by the
+`@aws-cdk/core:defaultCrossStackReferences` context key. This is useful for
+selectively weakening specific references to avoid the "deadly embrace" problem
+without changing the app-wide default.
+
+###### `strength`<sup>Required</sup> <a name="strength" id="@pepperize/cdk-private-bucket.PrivateBucket.applyCrossStackReferenceStrength.parameter.strength"></a>
+
+- *Type:* aws-cdk-lib.ReferenceStrength
+
+The reference strength to use for this resource.
+
+---
 
 ##### `applyRemovalPolicy` <a name="applyRemovalPolicy" id="@pepperize/cdk-private-bucket.PrivateBucket.applyRemovalPolicy"></a>
 
@@ -115,7 +164,8 @@ Adds a bucket notification event destination.
 ```typescript
    declare const myLambda: lambda.Function;
    const bucket = new s3.Bucket(this, 'MyBucket');
-   bucket.addEventNotification(s3.EventType.OBJECT_CREATED, new s3n.LambdaDestination(myLambda), {prefix: 'home/myusername/*'});
+   const filter: s3.NotificationKeyFilter = { prefix: 'home/myusername/*' };
+   bucket.addEventNotification(s3.EventType.OBJECT_CREATED, new s3n.LambdaDestination(myLambda), filter);
 ```
 
 
@@ -201,6 +251,49 @@ Filters (see onEvent).
 
 ---
 
+##### `addReplicationPolicy` <a name="addReplicationPolicy" id="@pepperize/cdk-private-bucket.PrivateBucket.addReplicationPolicy"></a>
+
+```typescript
+public addReplicationPolicy(roleArn: string, accessControlTransition?: boolean, account?: string): void
+```
+
+Adds resource policy statements to this bucket that permit cross-account replication.
+
+Call this method on the destination bucket. If the destination bucket is a referenced bucket,
+its policy cannot be modified by CDK and the permissions must be added in the destination
+account.
+
+To change replica ownership to the destination bucket owner, set `accessControlTransition` to
+true and provide the source bucket owner's account ID.
+
+> [https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-change-owner.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-change-owner.html)
+
+###### `roleArn`<sup>Required</sup> <a name="roleArn" id="@pepperize/cdk-private-bucket.PrivateBucket.addReplicationPolicy.parameter.roleArn"></a>
+
+- *Type:* string
+
+The ARN of the source bucket's replication role.
+
+---
+
+###### `accessControlTransition`<sup>Optional</sup> <a name="accessControlTransition" id="@pepperize/cdk-private-bucket.PrivateBucket.addReplicationPolicy.parameter.accessControlTransition"></a>
+
+- *Type:* boolean
+
+Whether to change replica ownership to the destination bucket owner.
+
+---
+
+###### `account`<sup>Optional</sup> <a name="account" id="@pepperize/cdk-private-bucket.PrivateBucket.addReplicationPolicy.parameter.account"></a>
+
+- *Type:* string
+
+The source bucket owner's AWS account ID.
+
+Required when `accessControlTransition` is true.
+
+---
+
 ##### `addToResourcePolicy` <a name="addToResourcePolicy" id="@pepperize/cdk-private-bucket.PrivateBucket.addToResourcePolicy"></a>
 
 ```typescript
@@ -235,13 +328,32 @@ To represent all keys, specify ``"*"``.
 
 If you need to specify a keyPattern with multiple components, concatenate them into a single string, e.g.:
 
-   arnForObjects(`home/${team}/${user}/*`)
+  arnForObjects(`home/${team}/${user}/*`)
 
 ###### `keyPattern`<sup>Required</sup> <a name="keyPattern" id="@pepperize/cdk-private-bucket.PrivateBucket.arnForObjects.parameter.keyPattern"></a>
 
 - *Type:* string
 
 ---
+
+##### `enableEventBridgeNotification` <a name="enableEventBridgeNotification" id="@pepperize/cdk-private-bucket.PrivateBucket.enableEventBridgeNotification"></a>
+
+```typescript
+public enableEventBridgeNotification(): void
+```
+
+Enables event bridge notification, causing all events below to be sent to EventBridge:.
+
+Object Deleted (DeleteObject)
+- Object Deleted (Lifecycle expiration)
+- Object Restore Initiated
+- Object Restore Completed
+- Object Restore Expired
+- Object Storage Class Changed
+- Object Access Tier Changed
+- Object ACL Updated
+- Object Tags Added
+- Object Tags Deleted
 
 ##### `grantDelete` <a name="grantDelete" id="@pepperize/cdk-private-bucket.PrivateBucket.grantDelete"></a>
 
@@ -250,6 +362,10 @@ public grantDelete(identity: IGrantable, objectsKeyPattern?: any): Grant
 ```
 
 Grants s3:DeleteObject* permission to an IAM principal for objects in this bucket.
+
+The use of this method is discouraged. Please use `grants.delete()` instead.
+
+[disable-awslint:no-grants]
 
 ###### `identity`<sup>Required</sup> <a name="identity" id="@pepperize/cdk-private-bucket.PrivateBucket.grantDelete.parameter.identity"></a>
 
@@ -264,6 +380,28 @@ The principal.
 - *Type:* any
 
 Restrict the permission to a certain key pattern (default '*').
+
+Parameter type is `any` but `string` should be passed in.
+
+---
+
+##### `grantOnKey` <a name="grantOnKey" id="@pepperize/cdk-private-bucket.PrivateBucket.grantOnKey"></a>
+
+```typescript
+public grantOnKey(grantee: IGrantable, actions: ...string[]): GrantOnKeyResult
+```
+
+Gives permissions to a grantable entity to perform actions on the encryption key.
+
+###### `grantee`<sup>Required</sup> <a name="grantee" id="@pepperize/cdk-private-bucket.PrivateBucket.grantOnKey.parameter.grantee"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+###### `actions`<sup>Required</sup> <a name="actions" id="@pepperize/cdk-private-bucket.PrivateBucket.grantOnKey.parameter.actions"></a>
+
+- *Type:* ...string[]
 
 ---
 
@@ -287,12 +425,17 @@ The method returns the `iam.Grant` object, which can then be modified
 as needed. For example, you can add a condition that will restrict access only
 to an IPv4 range like this:
 
-     const grant = bucket.grantPublicAccess();
-     grant.resourceStatement!.addCondition(‘IpAddress’, { “aws:SourceIp”: “54.240.143.0/24” });
+    const grant = bucket.grantPublicAccess();
+    grant.resourceStatement!.addCondition(‘IpAddress’, { “aws:SourceIp”: “54.240.143.0/24” });
 
 Note that if this `IBucket` refers to an existing bucket, possibly not
 managed by CloudFormation, this method will have no effect, since it's
 impossible to modify the policy of an existing bucket.
+
+
+The use of this method is discouraged. Please use `grants.publicAccess()` instead.
+
+[disable-awslint:no-grants]
 
 ###### `allowedActions`<sup>Required</sup> <a name="allowedActions" id="@pepperize/cdk-private-bucket.PrivateBucket.grantPublicAccess.parameter.allowedActions"></a>
 
@@ -323,6 +466,11 @@ Grants s3:PutObject* and s3:Abort* permissions for this bucket to an IAM princip
 If encryption is used, permission to use the key to encrypt the contents
 of written files will also be granted to the same principal.
 
+
+The use of this method is discouraged. Please use `grants.put()` instead.
+
+[disable-awslint:no-grants]
+
 ###### `identity`<sup>Required</sup> <a name="identity" id="@pepperize/cdk-private-bucket.PrivateBucket.grantPut.parameter.identity"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
@@ -337,6 +485,8 @@ The principal.
 
 Restrict the permission to a certain key pattern (default '*').
 
+Parameter type is `any` but `string` should be passed in.
+
 ---
 
 ##### `grantPutAcl` <a name="grantPutAcl" id="@pepperize/cdk-private-bucket.PrivateBucket.grantPutAcl"></a>
@@ -345,11 +495,9 @@ Restrict the permission to a certain key pattern (default '*').
 public grantPutAcl(identity: IGrantable, objectsKeyPattern?: string): Grant
 ```
 
-Grant the given IAM identity permissions to modify the ACLs of objects in the given Bucket.
+The use of this method is discouraged. Please use `grants.putAcl()` instead.
 
-If your application has the '@aws-cdk/aws-s3:grantWriteWithoutAcl' feature flag set,
-calling {@link grantWrite} or {@link grantReadWrite} no longer grants permissions to modify the ACLs of the objects;
-in this case, if you need to modify object ACLs, call this method explicitly.
+[disable-awslint:no-grants]
 
 ###### `identity`<sup>Required</sup> <a name="identity" id="@pepperize/cdk-private-bucket.PrivateBucket.grantPutAcl.parameter.identity"></a>
 
@@ -369,10 +517,15 @@ in this case, if you need to modify object ACLs, call this method explicitly.
 public grantRead(identity: IGrantable, objectsKeyPattern?: any): Grant
 ```
 
-Grant read permissions for this bucket and it's contents to an IAM principal (Role/Group/User).
+Grant read permissions for this bucket and its contents to an IAM principal (Role/Group/User).
 
 If encryption is used, permission to use the key to decrypt the contents
 of the bucket will also be granted to the same principal.
+
+
+The use of this method is discouraged. Please use `grants.read()` instead.
+
+[disable-awslint:no-grants]
 
 ###### `identity`<sup>Required</sup> <a name="identity" id="@pepperize/cdk-private-bucket.PrivateBucket.grantRead.parameter.identity"></a>
 
@@ -388,6 +541,8 @@ The principal.
 
 Restrict the permission to a certain key pattern (default '*').
 
+Parameter type is `any` but `string` should be passed in.
+
 ---
 
 ##### `grantReadWrite` <a name="grantReadWrite" id="@pepperize/cdk-private-bucket.PrivateBucket.grantReadWrite"></a>
@@ -396,18 +551,9 @@ Restrict the permission to a certain key pattern (default '*').
 public grantReadWrite(identity: IGrantable, objectsKeyPattern?: any): Grant
 ```
 
-Grants read/write permissions for this bucket and it's contents to an IAM principal (Role/Group/User).
+The use of this method is discouraged. Please use `grants.readWrite()` instead.
 
-If an encryption key is used, permission to use the key for
-encrypt/decrypt will also be granted.
-
-Before CDK version 1.85.0, this method granted the `s3:PutObject*` permission that included `s3:PutObjectAcl`,
-which could be used to grant read/write object access to IAM principals in other accounts.
-If you want to get rid of that behavior, update your CDK version to 1.85.0 or later,
-and make sure the `@aws-cdk/aws-s3:grantWriteWithoutAcl` feature flag is set to `true`
-in the `context` key of your cdk.json file.
-If you've already updated, but still need the principal to have permissions to modify the ACLs,
-use the {@link grantPutAcl} method.
+[disable-awslint:no-grants]
 
 ###### `identity`<sup>Required</sup> <a name="identity" id="@pepperize/cdk-private-bucket.PrivateBucket.grantReadWrite.parameter.identity"></a>
 
@@ -421,24 +567,47 @@ use the {@link grantPutAcl} method.
 
 ---
 
+##### `grantReplicationPermission` <a name="grantReplicationPermission" id="@pepperize/cdk-private-bucket.PrivateBucket.grantReplicationPermission"></a>
+
+```typescript
+public grantReplicationPermission(identity: IGrantable, props: GrantReplicationPermissionProps): Grant
+```
+
+Grant replication permission to a principal. This method allows the principal to perform replication operations on this bucket.
+
+Note that when calling this function for source or destination buckets that support KMS encryption,
+you need to specify the KMS key for encryption and the KMS key for decryption, respectively.
+
+
+The use of this method is discouraged. Please use `grants.replicationPermission()` instead.
+
+[disable-awslint:no-grants]
+
+###### `identity`<sup>Required</sup> <a name="identity" id="@pepperize/cdk-private-bucket.PrivateBucket.grantReplicationPermission.parameter.identity"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+The principal to grant replication permission to.
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="@pepperize/cdk-private-bucket.PrivateBucket.grantReplicationPermission.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_s3.GrantReplicationPermissionProps
+
+The properties of the replication source and destination buckets.
+
+---
+
 ##### `grantWrite` <a name="grantWrite" id="@pepperize/cdk-private-bucket.PrivateBucket.grantWrite"></a>
 
 ```typescript
-public grantWrite(identity: IGrantable, objectsKeyPattern?: any): Grant
+public grantWrite(identity: IGrantable, objectsKeyPattern?: any, allowedActionPatterns?: string[]): Grant
 ```
 
-Grant write permissions to this bucket to an IAM principal.
+The use of this method is discouraged. Please use `grants.write()` instead.
 
-If encryption is used, permission to use the key to encrypt the contents
-of written files will also be granted to the same principal.
-
-Before CDK version 1.85.0, this method granted the `s3:PutObject*` permission that included `s3:PutObjectAcl`,
-which could be used to grant read/write object access to IAM principals in other accounts.
-If you want to get rid of that behavior, update your CDK version to 1.85.0 or later,
-and make sure the `@aws-cdk/aws-s3:grantWriteWithoutAcl` feature flag is set to `true`
-in the `context` key of your cdk.json file.
-If you've already updated, but still need the principal to have permissions to modify the ACLs,
-use the {@link grantPutAcl} method.
+[disable-awslint:no-grants]
 
 ###### `identity`<sup>Required</sup> <a name="identity" id="@pepperize/cdk-private-bucket.PrivateBucket.grantWrite.parameter.identity"></a>
 
@@ -449,6 +618,12 @@ use the {@link grantPutAcl} method.
 ###### `objectsKeyPattern`<sup>Optional</sup> <a name="objectsKeyPattern" id="@pepperize/cdk-private-bucket.PrivateBucket.grantWrite.parameter.objectsKeyPattern"></a>
 
 - *Type:* any
+
+---
+
+###### `allowedActionPatterns`<sup>Optional</sup> <a name="allowedActionPatterns" id="@pepperize/cdk-private-bucket.PrivateBucket.grantWrite.parameter.allowedActionPatterns"></a>
+
+- *Type:* string[]
 
 ---
 
@@ -723,15 +898,17 @@ The metric configuration to add.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.isOwnedResource">isOwnedResource</a></code> | Returns true if the construct was created by CDK, and false otherwise. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.isResource">isResource</a></code> | Check whether the given construct is a Resource. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.fromBucketArn">fromBucketArn</a></code> | *No description.* |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.fromBucketAttributes">fromBucketAttributes</a></code> | Creates a Bucket construct that represents an external bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.fromBucketName">fromBucketName</a></code> | *No description.* |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.fromCfnBucket">fromCfnBucket</a></code> | Create a mutable `IBucket` based on a low-level `CfnBucket`. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.validateBucketName">validateBucketName</a></code> | Thrown an exception if the given bucket name is not valid. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-private-bucket.PrivateBucket.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-private-bucket.PrivateBucket.isConstruct"></a>
 
 ```typescript
 import { PrivateBucket } from '@pepperize/cdk-private-bucket'
@@ -741,11 +918,41 @@ PrivateBucket.isConstruct(x: any)
 
 Checks if `x` is a construct.
 
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-private-bucket.PrivateBucket.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
 Any object.
+
+---
+
+##### `isOwnedResource` <a name="isOwnedResource" id="@pepperize/cdk-private-bucket.PrivateBucket.isOwnedResource"></a>
+
+```typescript
+import { PrivateBucket } from '@pepperize/cdk-private-bucket'
+
+PrivateBucket.isOwnedResource(construct: IConstruct)
+```
+
+Returns true if the construct was created by CDK, and false otherwise.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@pepperize/cdk-private-bucket.PrivateBucket.isOwnedResource.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
 
 ---
 
@@ -854,12 +1061,28 @@ PrivateBucket.fromBucketName(scope: Construct, id: string, bucketName: string)
 
 ---
 
+##### `fromCfnBucket` <a name="fromCfnBucket" id="@pepperize/cdk-private-bucket.PrivateBucket.fromCfnBucket"></a>
+
+```typescript
+import { PrivateBucket } from '@pepperize/cdk-private-bucket'
+
+PrivateBucket.fromCfnBucket(cfnBucket: CfnBucket)
+```
+
+Create a mutable `IBucket` based on a low-level `CfnBucket`.
+
+###### `cfnBucket`<sup>Required</sup> <a name="cfnBucket" id="@pepperize/cdk-private-bucket.PrivateBucket.fromCfnBucket.parameter.cfnBucket"></a>
+
+- *Type:* aws-cdk-lib.aws_s3.CfnBucket
+
+---
+
 ##### `validateBucketName` <a name="validateBucketName" id="@pepperize/cdk-private-bucket.PrivateBucket.validateBucketName"></a>
 
 ```typescript
 import { PrivateBucket } from '@pepperize/cdk-private-bucket'
 
-PrivateBucket.validateBucketName(physicalName: string)
+PrivateBucket.validateBucketName(physicalName: string, allowLegacyBucketNaming?: boolean)
 ```
 
 Thrown an exception if the given bucket name is not valid.
@@ -872,23 +1095,36 @@ name of the bucket.
 
 ---
 
+###### `allowLegacyBucketNaming`<sup>Optional</sup> <a name="allowLegacyBucketNaming" id="@pepperize/cdk-private-bucket.PrivateBucket.validateBucketName.parameter.allowLegacyBucketNaming"></a>
+
+- *Type:* boolean
+
+allow legacy bucket naming style, default is false.
+
+---
+
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.env">env</a></code> | <code>aws-cdk-lib.ResourceEnvironment</code> | The environment this resource belongs to. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.env">env</a></code> | <code>aws-cdk-lib.interfaces.ResourceEnvironment</code> | The environment this resource belongs to. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this resource is defined. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketArn">bucketArn</a></code> | <code>string</code> | The ARN of the bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketDomainName">bucketDomainName</a></code> | <code>string</code> | The IPv4 DNS name of the specified bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketDualStackDomainName">bucketDualStackDomainName</a></code> | <code>string</code> | The IPv6 DNS name of the specified bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketName">bucketName</a></code> | <code>string</code> | The name of the bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketRef">bucketRef</a></code> | <code>aws-cdk-lib.interfaces.aws_s3.BucketReference</code> | A reference to a Bucket resource. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketRegionalDomainName">bucketRegionalDomainName</a></code> | <code>string</code> | The regional domain name of the specified bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketWebsiteDomainName">bucketWebsiteDomainName</a></code> | <code>string</code> | The Domain name of the static website. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.bucketWebsiteUrl">bucketWebsiteUrl</a></code> | <code>string</code> | The URL of the static website. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.grants">grants</a></code> | <code>aws-cdk-lib.aws_s3.BucketGrants</code> | Collection of grant methods for a Bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_s3.BucketEncryption</code> | The default server-side encryption mode that S3 applies to new objects in this bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.encryptionKey">encryptionKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS encryption key associated with this bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.isWebsite">isWebsite</a></code> | <code>boolean</code> | If this bucket has been configured for static website hosting. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.disallowPublicAccess">disallowPublicAccess</a></code> | <code>boolean</code> | Whether to disallow public access. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.policy">policy</a></code> | <code>aws-cdk-lib.aws_s3.BucketPolicy</code> | The resource policy associated with this bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.replicationRoleArn">replicationRoleArn</a></code> | <code>string</code> | Role used to set up permissions on this bucket for replication. |
 
 ---
 
@@ -910,16 +1146,17 @@ The tree node.
 public readonly env: ResourceEnvironment;
 ```
 
-- *Type:* aws-cdk-lib.ResourceEnvironment
+- *Type:* aws-cdk-lib.interfaces.ResourceEnvironment
 
 The environment this resource belongs to.
 
-For resources that are created and managed by the CDK
-(generally, those created by creating new class instances like Role, Bucket, etc.),
-this is always the same as the environment of the stack they belong to;
-however, for imported resources
-(those obtained from static methods like fromRoleArn, fromBucketName, etc.),
-that might be different than the stack they were imported into.
+For resources that are created and managed in a Stack (those created by
+creating new class instances like `new Role()`, `new Bucket()`, etc.), this
+is always the same as the environment of the stack they belong to.
+
+For referenced resources (those obtained from referencing methods like
+`Role.fromRoleArn()`, `Bucket.fromBucketName()`, etc.), they might be
+different than the stack they were imported into.
 
 ---
 
@@ -983,6 +1220,18 @@ The name of the bucket.
 
 ---
 
+##### `bucketRef`<sup>Required</sup> <a name="bucketRef" id="@pepperize/cdk-private-bucket.PrivateBucket.property.bucketRef"></a>
+
+```typescript
+public readonly bucketRef: BucketReference;
+```
+
+- *Type:* aws-cdk-lib.interfaces.aws_s3.BucketReference
+
+A reference to a Bucket resource.
+
+---
+
 ##### `bucketRegionalDomainName`<sup>Required</sup> <a name="bucketRegionalDomainName" id="@pepperize/cdk-private-bucket.PrivateBucket.property.bucketRegionalDomainName"></a>
 
 ```typescript
@@ -1019,6 +1268,32 @@ The URL of the static website.
 
 ---
 
+##### `grants`<sup>Required</sup> <a name="grants" id="@pepperize/cdk-private-bucket.PrivateBucket.property.grants"></a>
+
+```typescript
+public readonly grants: BucketGrants;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.BucketGrants
+
+Collection of grant methods for a Bucket.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@pepperize/cdk-private-bucket.PrivateBucket.property.encryption"></a>
+
+```typescript
+public readonly encryption: BucketEncryption;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.BucketEncryption
+
+The default server-side encryption mode that S3 applies to new objects in this bucket.
+
+`UNENCRYPTED` is never returned; see `IBucket.encryption`.
+
+---
+
 ##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey" id="@pepperize/cdk-private-bucket.PrivateBucket.property.encryptionKey"></a>
 
 ```typescript
@@ -1043,6 +1318,18 @@ If this bucket has been configured for static website hosting.
 
 ---
 
+##### `disallowPublicAccess`<sup>Optional</sup> <a name="disallowPublicAccess" id="@pepperize/cdk-private-bucket.PrivateBucket.property.disallowPublicAccess"></a>
+
+```typescript
+public readonly disallowPublicAccess: boolean;
+```
+
+- *Type:* boolean
+
+Whether to disallow public access.
+
+---
+
 ##### `policy`<sup>Optional</sup> <a name="policy" id="@pepperize/cdk-private-bucket.PrivateBucket.property.policy"></a>
 
 ```typescript
@@ -1058,6 +1345,37 @@ first call to addToResourcePolicy(s).
 
 ---
 
+##### `replicationRoleArn`<sup>Optional</sup> <a name="replicationRoleArn" id="@pepperize/cdk-private-bucket.PrivateBucket.property.replicationRoleArn"></a>
+
+```typescript
+public readonly replicationRoleArn: string;
+```
+
+- *Type:* string
+
+Role used to set up permissions on this bucket for replication.
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucket.property.PROPERTY_INJECTION_ID">PROPERTY_INJECTION_ID</a></code> | <code>string</code> | Uniquely identifies this class. |
+
+---
+
+##### `PROPERTY_INJECTION_ID`<sup>Required</sup> <a name="PROPERTY_INJECTION_ID" id="@pepperize/cdk-private-bucket.PrivateBucket.property.PROPERTY_INJECTION_ID"></a>
+
+```typescript
+public readonly PROPERTY_INJECTION_ID: string;
+```
+
+- *Type:* string
+
+Uniquely identifies this class.
+
+---
 
 ## Structs <a name="Structs" id="Structs"></a>
 
@@ -1075,31 +1393,61 @@ const privateBucketProps: PrivateBucketProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.abacStatus">abacStatus</a></code> | <code>boolean</code> | Enables Amazon S3 to evaluate the ABAC policy in the request. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.accessControl">accessControl</a></code> | <code>aws-cdk-lib.aws_s3.BucketAccessControl</code> | Specifies a canned ACL that grants predefined permissions to the bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.autoDeleteObjects">autoDeleteObjects</a></code> | <code>boolean</code> | Whether all objects should be automatically deleted when the bucket is removed from the stack or when the stack is deleted. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.blockedEncryptionTypes">blockedEncryptionTypes</a></code> | <code>aws-cdk-lib.aws_s3.BlockedEncryptionType[]</code> | Encryption types that should be blocked for this bucket. Use `NONE` to allow all encryption types. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.blockPublicAccess">blockPublicAccess</a></code> | <code>aws-cdk-lib.aws_s3.BlockPublicAccess</code> | The block public access configuration of this bucket. |
-| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.bucketKeyEnabled">bucketKeyEnabled</a></code> | <code>boolean</code> | Specifies whether Amazon S3 should use an S3 Bucket Key with server-side encryption using KMS (SSE-KMS) for new objects in the bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.bucketKeyEnabled">bucketKeyEnabled</a></code> | <code>boolean</code> | Whether Amazon S3 should use its own intermediary key to generate data keys. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.bucketName">bucketName</a></code> | <code>string</code> | Physical name of this bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.bucketNamePrefix">bucketNamePrefix</a></code> | <code>string</code> | A prefix for the bucket name in the account-regional namespace. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.bucketNamespace">bucketNamespace</a></code> | <code>aws-cdk-lib.aws_s3.BucketNamespace</code> | The namespace for the bucket name. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.cors">cors</a></code> | <code>aws-cdk-lib.aws_s3.CorsRule[]</code> | The CORS configuration of this bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_s3.BucketEncryption</code> | The kind of server-side encryption to apply to this bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.encryptionKey">encryptionKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | External KMS key to use for bucket encryption. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.enforceSSL">enforceSSL</a></code> | <code>boolean</code> | Enforces SSL for requests. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.eventBridgeEnabled">eventBridgeEnabled</a></code> | <code>boolean</code> | Whether this bucket should send notifications to Amazon EventBridge or not. |
-| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.intelligentTieringConfigurations">intelligentTieringConfigurations</a></code> | <code>aws-cdk-lib.aws_s3.IntelligentTieringConfiguration[]</code> | Inteligent Tiering Configurations. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.intelligentTieringConfigurations">intelligentTieringConfigurations</a></code> | <code>aws-cdk-lib.aws_s3.IntelligentTieringConfiguration[]</code> | Intelligent Tiering Configurations. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.inventories">inventories</a></code> | <code>aws-cdk-lib.aws_s3.Inventory[]</code> | The inventory configuration of the bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.lifecycleRules">lifecycleRules</a></code> | <code>aws-cdk-lib.aws_s3.LifecycleRule[]</code> | Rules that define how Amazon S3 manages objects during their lifetime. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.metrics">metrics</a></code> | <code>aws-cdk-lib.aws_s3.BucketMetrics[]</code> | The metrics configuration of this bucket. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.minimumTLSVersion">minimumTLSVersion</a></code> | <code>number</code> | Enforces minimum TLS version for requests. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.notificationsHandlerRole">notificationsHandlerRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The role to be used by the notifications handler. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.notificationsSkipDestinationValidation">notificationsSkipDestinationValidation</a></code> | <code>boolean</code> | Skips notification validation of Amazon SQS, Amazon SNS, and Lambda destinations. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.objectLockDefaultRetention">objectLockDefaultRetention</a></code> | <code>aws-cdk-lib.aws_s3.ObjectLockRetention</code> | The default retention mode and rules for S3 Object Lock. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.objectLockEnabled">objectLockEnabled</a></code> | <code>boolean</code> | Enable object lock on the bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.objectOwnership">objectOwnership</a></code> | <code>aws-cdk-lib.aws_s3.ObjectOwnership</code> | The objectOwnership of the bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.publicReadAccess">publicReadAccess</a></code> | <code>boolean</code> | Grants public read access to all objects in the bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.removalPolicy">removalPolicy</a></code> | <code>aws-cdk-lib.RemovalPolicy</code> | Policy to apply when the bucket is removed from this stack. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.replicationRole">replicationRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The role to be used by the replication. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.replicationRules">replicationRules</a></code> | <code>aws-cdk-lib.aws_s3.ReplicationRule[]</code> | A container for one or more replication rules. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.serverAccessLogsBucket">serverAccessLogsBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | Destination bucket for the server access logs. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.serverAccessLogsPrefix">serverAccessLogsPrefix</a></code> | <code>string</code> | Optional log file prefix to use for the bucket's access logs. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.targetObjectKeyFormat">targetObjectKeyFormat</a></code> | <code>aws-cdk-lib.aws_s3.TargetObjectKeyFormat</code> | Optional key format for log objects. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.transferAcceleration">transferAcceleration</a></code> | <code>boolean</code> | Whether this bucket should have transfer acceleration turned on or not. |
+| <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.transitionDefaultMinimumObjectSize">transitionDefaultMinimumObjectSize</a></code> | <code>aws-cdk-lib.aws_s3.TransitionDefaultMinimumObjectSize</code> | Indicates which default minimum object size behavior is applied to the lifecycle configuration. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.versioned">versioned</a></code> | <code>boolean</code> | Whether this bucket should have versioning turned on or not. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.websiteErrorDocument">websiteErrorDocument</a></code> | <code>string</code> | The name of the error document (e.g. "404.html") for the website. `websiteIndexDocument` must also be set if this is set. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.websiteIndexDocument">websiteIndexDocument</a></code> | <code>string</code> | The name of the index document (e.g. "index.html") for the website. Enables static website hosting for this bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.websiteRedirect">websiteRedirect</a></code> | <code>aws-cdk-lib.aws_s3.RedirectTarget</code> | Specifies the redirect behavior of all requests to a website endpoint of a bucket. |
 | <code><a href="#@pepperize/cdk-private-bucket.PrivateBucketProps.property.websiteRoutingRules">websiteRoutingRules</a></code> | <code>aws-cdk-lib.aws_s3.RoutingRule[]</code> | Rules that define when a redirect is applied and the redirect behavior. |
+
+---
+
+##### `abacStatus`<sup>Optional</sup> <a name="abacStatus" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.abacStatus"></a>
+
+```typescript
+public readonly abacStatus: boolean;
+```
+
+- *Type:* boolean
+- *Default:* The ABAC status is not set
+
+Enables Amazon S3 to evaluate the ABAC policy in the request.
+
+Set to true to enable ABAC, false to explicitly disable it.
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html#cfn-s3-bucket-abacstatus](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html#cfn-s3-bucket-abacstatus)
 
 ---
 
@@ -1134,6 +1482,27 @@ switching this to `false` in a CDK version *before* `1.126.0` will lead to
 all objects in the bucket being deleted. Be sure to update your bucket resources
 by deploying with CDK version `1.126.0` or later **before** switching this value to `false`.
 
+Setting `autoDeleteObjects` to true on a bucket will add `s3:PutBucketPolicy` to the
+bucket policy. This is because during bucket deletion, the custom resource provider
+needs to update the bucket policy by adding a deny policy for `s3:PutObject` to
+prevent race conditions with external bucket writers.
+
+---
+
+##### `blockedEncryptionTypes`<sup>Optional</sup> <a name="blockedEncryptionTypes" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.blockedEncryptionTypes"></a>
+
+```typescript
+public readonly blockedEncryptionTypes: BlockedEncryptionType[];
+```
+
+- *Type:* aws-cdk-lib.aws_s3.BlockedEncryptionType[]
+- *Default:* Amazon S3 determines which encryption types to block.
+
+Encryption types that should be blocked for this bucket. Use `NONE` to allow all encryption types.
+
+At least one `BlockedEncryptionType` must be given. If `NONE` is given, it must be
+the only `BlockedEncryptionType` in the list.
+
 ---
 
 ##### `blockPublicAccess`<sup>Optional</sup> <a name="blockPublicAccess" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.blockPublicAccess"></a>
@@ -1160,9 +1529,15 @@ public readonly bucketKeyEnabled: boolean;
 - *Type:* boolean
 - *Default:* false
 
-Specifies whether Amazon S3 should use an S3 Bucket Key with server-side encryption using KMS (SSE-KMS) for new objects in the bucket.
+Whether Amazon S3 should use its own intermediary key to generate data keys.
 
-Only relevant, when Encryption is set to {@link BucketEncryption.KMS}
+Only relevant when using KMS for encryption.
+
+- If not enabled, every object GET and PUT will cause an API call to KMS (with the
+  attendant cost implications of that).
+- If enabled, S3 will use its own time-limited key instead.
+
+Only relevant, when Encryption is not set to `BucketEncryption.UNENCRYPTED`.
 
 ---
 
@@ -1176,6 +1551,50 @@ public readonly bucketName: string;
 - *Default:* Assigned by CloudFormation (recommended).
 
 Physical name of this bucket.
+
+Cannot be used together with `bucketNamePrefix` or `bucketNamespace`.
+
+---
+
+##### `bucketNamePrefix`<sup>Optional</sup> <a name="bucketNamePrefix" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.bucketNamePrefix"></a>
+
+```typescript
+public readonly bucketNamePrefix: string;
+```
+
+- *Type:* string
+- *Default:* No prefix.
+
+A prefix for the bucket name in the account-regional namespace.
+
+Requires `bucketNamespace` to be set to `ACCOUNT_REGIONAL`.
+Cannot be used together with `bucketName`.
+
+CloudFormation appends `-<accountId>-<region>-an` to form the full name.
+For example, `my-app` becomes `my-app-123456789012-us-east-1-an`.
+
+Must contain only lowercase letters, numbers, and hyphens.
+Must start and end with a lowercase letter or number.
+
+---
+
+##### `bucketNamespace`<sup>Optional</sup> <a name="bucketNamespace" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.bucketNamespace"></a>
+
+```typescript
+public readonly bucketNamespace: BucketNamespace;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.BucketNamespace
+- *Default:* Global namespace.
+
+The namespace for the bucket name.
+
+AWS recommends `ACCOUNT_REGIONAL` for improved security, as bucket names
+are scoped to your account and cannot be claimed by other accounts.
+When set to `ACCOUNT_REGIONAL`, `bucketNamePrefix` is required.
+When set to `GLOBAL`, it can be used standalone to explicitly specify the default namespace.
+
+> [https://docs.aws.amazon.com/AmazonS3/latest/userguide/gpbucketnamespaces.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/gpbucketnamespaces.html)
 
 ---
 
@@ -1201,7 +1620,7 @@ public readonly encryption: BucketEncryption;
 ```
 
 - *Type:* aws-cdk-lib.aws_s3.BucketEncryption
-- *Default:* `Kms` if `encryptionKey` is specified, or `Unencrypted` otherwise.
+- *Default:* `KMS` if `encryptionKey` is specified, or `S3_MANAGED` otherwise.
 
 The kind of server-side encryption to apply to this bucket.
 
@@ -1217,13 +1636,12 @@ public readonly encryptionKey: IKey;
 ```
 
 - *Type:* aws-cdk-lib.aws_kms.IKey
-- *Default:* If encryption is set to "Kms" and this property is undefined, a new KMS key will be created and associated with this bucket.
+- *Default:* If `encryption` is set to `KMS` and this property is undefined, a new KMS key will be created and associated with this bucket.
 
 External KMS key to use for bucket encryption.
 
-The 'encryption' property must be either not specified or set to "Kms".
-An error will be emitted if encryption is set to "Unencrypted" or
-"Managed".
+The `encryption` property must be either not specified or set to `KMS` or `DSSE`.
+An error will be emitted if `encryption` is set to `UNENCRYPTED` or `S3_MANAGED`.
 
 ---
 
@@ -1264,9 +1682,9 @@ public readonly intelligentTieringConfigurations: IntelligentTieringConfiguratio
 ```
 
 - *Type:* aws-cdk-lib.aws_s3.IntelligentTieringConfiguration[]
-- *Default:* No Intelligent Tiiering Configurations.
+- *Default:* No Intelligent Tiering Configurations.
 
-Inteligent Tiering Configurations.
+Intelligent Tiering Configurations.
 
 > [https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html)
 
@@ -1315,6 +1733,85 @@ The metrics configuration of this bucket.
 
 ---
 
+##### `minimumTLSVersion`<sup>Optional</sup> <a name="minimumTLSVersion" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.minimumTLSVersion"></a>
+
+```typescript
+public readonly minimumTLSVersion: number;
+```
+
+- *Type:* number
+- *Default:* No minimum TLS version is enforced.
+
+Enforces minimum TLS version for requests.
+
+Requires `enforceSSL` to be enabled.
+
+> [https://docs.aws.amazon.com/AmazonS3/latest/userguide/amazon-s3-policy-keys.html#example-object-tls-version](https://docs.aws.amazon.com/AmazonS3/latest/userguide/amazon-s3-policy-keys.html#example-object-tls-version)
+
+---
+
+##### `notificationsHandlerRole`<sup>Optional</sup> <a name="notificationsHandlerRole" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.notificationsHandlerRole"></a>
+
+```typescript
+public readonly notificationsHandlerRole: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+- *Default:* a new role will be created.
+
+The role to be used by the notifications handler.
+
+---
+
+##### `notificationsSkipDestinationValidation`<sup>Optional</sup> <a name="notificationsSkipDestinationValidation" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.notificationsSkipDestinationValidation"></a>
+
+```typescript
+public readonly notificationsSkipDestinationValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Skips notification validation of Amazon SQS, Amazon SNS, and Lambda destinations.
+
+---
+
+##### `objectLockDefaultRetention`<sup>Optional</sup> <a name="objectLockDefaultRetention" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.objectLockDefaultRetention"></a>
+
+```typescript
+public readonly objectLockDefaultRetention: ObjectLockRetention;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.ObjectLockRetention
+- *Default:* no default retention period
+
+The default retention mode and rules for S3 Object Lock.
+
+Default retention can be configured after a bucket is created if the bucket already
+has object lock enabled. Enabling object lock for existing buckets is not supported.
+
+> [https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html#object-lock-bucket-config-enable](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html#object-lock-bucket-config-enable)
+
+---
+
+##### `objectLockEnabled`<sup>Optional</sup> <a name="objectLockEnabled" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.objectLockEnabled"></a>
+
+```typescript
+public readonly objectLockEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false, unless objectLockDefaultRetention is set (then, true)
+
+Enable object lock on the bucket.
+
+Enabling object lock for existing buckets is not supported. Object lock must be
+enabled when the bucket is created.
+
+> [https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html#object-lock-bucket-config-enable](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html#object-lock-bucket-config-enable)
+
+---
+
 ##### `objectOwnership`<sup>Optional</sup> <a name="objectOwnership" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.objectOwnership"></a>
 
 ```typescript
@@ -1322,7 +1819,7 @@ public readonly objectOwnership: ObjectOwnership;
 ```
 
 - *Type:* aws-cdk-lib.aws_s3.ObjectOwnership
-- *Default:* No ObjectOwnership configuration, uploading account will own the object.
+- *Default:* No ObjectOwnership configuration. By default, Amazon S3 sets Object Ownership to `Bucket owner enforced`. This means ACLs are disabled and the bucket owner will own every object.
 
 The objectOwnership of the bucket.
 
@@ -1358,6 +1855,34 @@ Policy to apply when the bucket is removed from this stack.
 
 ---
 
+##### `replicationRole`<sup>Optional</sup> <a name="replicationRole" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.replicationRole"></a>
+
+```typescript
+public readonly replicationRole: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+- *Default:* a new role will be created.
+
+The role to be used by the replication.
+
+When setting this property, you must also set `replicationRules`.
+
+---
+
+##### `replicationRules`<sup>Optional</sup> <a name="replicationRules" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.replicationRules"></a>
+
+```typescript
+public readonly replicationRules: ReplicationRule[];
+```
+
+- *Type:* aws-cdk-lib.aws_s3.ReplicationRule[]
+- *Default:* No replication
+
+A container for one or more replication rules.
+
+---
+
 ##### `serverAccessLogsBucket`<sup>Optional</sup> <a name="serverAccessLogsBucket" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.serverAccessLogsBucket"></a>
 
 ```typescript
@@ -1386,6 +1911,19 @@ If defined without "serverAccessLogsBucket", enables access logs to current buck
 
 ---
 
+##### `targetObjectKeyFormat`<sup>Optional</sup> <a name="targetObjectKeyFormat" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.targetObjectKeyFormat"></a>
+
+```typescript
+public readonly targetObjectKeyFormat: TargetObjectKeyFormat;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.TargetObjectKeyFormat
+- *Default:* the default key format is: [DestinationPrefix][YYYY]-[MM]-[DD]-[hh]-[mm]-[ss]-[UniqueString]
+
+Optional key format for log objects.
+
+---
+
 ##### `transferAcceleration`<sup>Optional</sup> <a name="transferAcceleration" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.transferAcceleration"></a>
 
 ```typescript
@@ -1399,6 +1937,23 @@ Whether this bucket should have transfer acceleration turned on or not.
 
 ---
 
+##### `transitionDefaultMinimumObjectSize`<sup>Optional</sup> <a name="transitionDefaultMinimumObjectSize" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.transitionDefaultMinimumObjectSize"></a>
+
+```typescript
+public readonly transitionDefaultMinimumObjectSize: TransitionDefaultMinimumObjectSize;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.TransitionDefaultMinimumObjectSize
+- *Default:* TransitionDefaultMinimumObjectSize.VARIES_BY_STORAGE_CLASS before September 2024, otherwise TransitionDefaultMinimumObjectSize.ALL_STORAGE_CLASSES_128_K.
+
+Indicates which default minimum object size behavior is applied to the lifecycle configuration.
+
+To customize the minimum object size for any transition you can add a filter that specifies a custom
+`objectSizeGreaterThan` or `objectSizeLessThan` for `lifecycleRules` property. Custom filters always
+take precedence over the default transition behavior.
+
+---
+
 ##### `versioned`<sup>Optional</sup> <a name="versioned" id="@pepperize/cdk-private-bucket.PrivateBucketProps.property.versioned"></a>
 
 ```typescript
@@ -1406,7 +1961,7 @@ public readonly versioned: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* false
+- *Default:* false (unless object lock is enabled, then true)
 
 Whether this bucket should have versioning turned on or not.
 
