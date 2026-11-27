@@ -37,7 +37,7 @@ const project = new AwsCdkConstructLibrary({
     mavenArtifactId: "cdk-private-bucket",
     javaPackage: "com.pepperize.cdk.private_bucket",
   },
-  devDeps: ["@pepperize/projen-awscdk-construct@~0.1.1", "@types/node@^22", "typescript@~6.0"],
+  devDeps: ["@pepperize/projen-awscdk-construct@~0.1.2", "@types/node@^22", "typescript@~6.0"],
 });
 
 project.synth();
